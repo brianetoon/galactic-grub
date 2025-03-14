@@ -1,27 +1,28 @@
 import mongoose from "mongoose";
 import validator from "validator";
+import bcrypt from "bcrypt";
 
 const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    trim: true,
-    required: true,
-  },
   username: {
     type: String,
     trim: true,
     required: true,
     unique: true
   },
-  bio: {
-    type: String,
-    trim: true,
-  },
   email: {
     type: String,
     trim: true,
     required: true,
     unique: true,
+    lowercase: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  bio: {
+    type: String,
+    trim: true,
   },
   avatarUrl: {
     type: String,
@@ -36,27 +37,35 @@ userSchema.statics.signup = async function (username, email, password) {
   if (!username || !email || !password) {
     throw Error("Please fill in all required fields");
   }
-  
-  const exists = await this.findOne({ email });
+  if (!validator.isEmail(email)) {
+    throw Error("Email is not valid");
+  }
+  if (!validator.isAlphanumeric(username)) {
+    throw Error("Username must contain only letters and numbers");
+  }
+
+  const normalizedEmail = email.toLowerCase();
+  const exists = await this.findOne({ email: normalizedEmail });
 
   if (exists) {
     throw Error("Email already in use");
   }
-  if (!validator.isEmail(email)) {
-    throw Error("Email is not valid");
-  }
 
   // password hashing
-  const salt = await bcrypt.getSalt(10);
+  const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(password, salt);
 
   // create new user
-  const user = await this.create({ username, email, password: hash});
-
-  return user;
+  try {
+    const user = await this.create({ username, email: normalizedEmail, password: hash });
+    return user;
+  } catch (err) {
+    if (err.code === 11000) {
+      throw Error("Username or email already exists"); 
+    }
+    throw err; 
+  }
 }
-
-
 
 const User = mongoose.model("User", userSchema);
 export default User;
