@@ -10,8 +10,7 @@ export const getAllRecipes = async (req, res, next) => {
 
     res.status(200).json({ success: true, data: result });
   } catch(err) {
-    // next(err); 
-    console.log(err);
+    next(err); 
   }
 }
 

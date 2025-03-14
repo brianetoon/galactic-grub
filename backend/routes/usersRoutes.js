@@ -22,9 +22,9 @@ router.post("/signup", async (req, res, next) => {
       },
       token 
     });
-  } catch(err) {
+  } catch (err) {
     console.log(err);
-    res.status(400).json({ success: false, error: err.message });
+    next(err);
   }
 });
 
