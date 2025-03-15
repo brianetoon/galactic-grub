@@ -10,7 +10,6 @@ router.post("/signup", async (req, res, next) => {
 
   try {
     const user = await User.signup(username, email, password);
-    // create a json web token
     const token = generateToken(user._id);
 
     res.status(201).json({ 
@@ -22,8 +21,31 @@ router.post("/signup", async (req, res, next) => {
       },
       token 
     });
+
   } catch (err) {
-    console.log(err);
+    next(err);
+  }
+});
+
+router.post("/login", async (req, res, next) => {
+  console.log(`🚀 ${req.method} request for logging in a user`);
+  const { email, password } = req.body;
+
+  try {
+    const user = await User.login(email, password);
+    const token = generateToken(user._id);
+
+    res.status(201).json({ 
+      success: true,
+      data: {
+        _id: user._id,
+        username: user.username,
+        email: user.email
+      },
+      token 
+    });
+
+  } catch (err) {
     next(err);
   }
 });
