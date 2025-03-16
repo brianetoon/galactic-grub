@@ -1,10 +1,23 @@
-import { Button } from "@/components/ui/button";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
+
+import Home from "./pages/Home";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 
 function App() {
   return (
     <div className="app">
-      <h1 className="text-blue-900 text-3xl">Glactic Grub</h1>
-      <Button>Click me!</Button>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </Router>
     </div>
   )
 }
