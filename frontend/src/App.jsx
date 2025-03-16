@@ -4,6 +4,8 @@ import {
   Route
 } from "react-router-dom";
 
+import SiteHeader from "./components/layout/SiteHeader";
+
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
@@ -12,6 +14,7 @@ function App() {
   return (
     <div className="app">
       <Router>
+        <SiteHeader />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />

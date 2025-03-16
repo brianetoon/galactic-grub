@@ -1,5 +1,7 @@
 export default function Login() {
   return (
-    <div>Login</div>
+    <div className="container mx-auto">
+      <h2>Log in</h2>
+    </div>
   )
 }
