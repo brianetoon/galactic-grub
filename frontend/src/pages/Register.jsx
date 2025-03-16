@@ -1,7 +1,11 @@
-export default function Register() {
+import RegisterForm from "@/components/auth/RegisterForm"
+
+const Register = () => {
   return (
     <div className="container mx-auto p-4">
-      <h2>Register</h2>
+      <RegisterForm />
     </div>
   )
 }
+
+export default Register
