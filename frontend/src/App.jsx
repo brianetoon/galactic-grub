@@ -4,20 +4,20 @@ import {
   Route
 } from "react-router-dom";
 
-import SiteHeader from "./components/layout/SiteHeader";
+import Header from "./components/layout/Header";
 
 import Home from "./pages/Home";
-import Signup from "./pages/Signup";
+import Register from "./pages/Register";
 import Login from "./pages/Login";
 
 function App() {
   return (
     <div className="app">
       <Router>
-        <SiteHeader />
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
