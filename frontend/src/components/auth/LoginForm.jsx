@@ -1,4 +1,5 @@
 import AuthCard from "./AuthCard"
+import useAuthStore from "@/store/useAuthStore";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginSchema } from "@/schemas/authSchema";
@@ -14,6 +15,7 @@ import {
 } from "@/components/ui/form";
 
 const LoginForm = () => {
+  const { login } = useAuthStore();
 
   const form = useForm({
     resolver: zodResolver(LoginSchema),
@@ -24,7 +26,7 @@ const LoginForm = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    login(data);
   }
 
   return (
