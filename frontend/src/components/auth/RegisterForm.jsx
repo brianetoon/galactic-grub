@@ -24,8 +24,8 @@ const RegisterForm = () => {
     }
   });
 
-  const onSubmit = () => {
-    console.log("register form submitted");
+  const onSubmit = (data) => {
+    console.log(data);
   }
 
   return (
@@ -36,6 +36,7 @@ const RegisterForm = () => {
       backButtonLabel="Already have an account? Log in here."
     >
       <Form {...form}>
+
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-4">
             <FormField 
@@ -51,6 +52,7 @@ const RegisterForm = () => {
                 </FormItem>
               )}
             />
+
             <FormField 
               control={form.control}
               name="email"
@@ -64,6 +66,7 @@ const RegisterForm = () => {
                 </FormItem>
               )}
             />
+
             <FormField 
               control={form.control}
               name="password"
@@ -77,10 +80,13 @@ const RegisterForm = () => {
                 </FormItem>
               )}
             />
+
           </div>
+
           <Button type="submit" className="w-full">
             Register
           </Button>
+
         </form>
       </Form>
     </AuthCard>

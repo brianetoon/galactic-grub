@@ -1,9 +1,9 @@
-import React from 'react'
+import LoginForm from "@/components/auth/LoginForm"
 
 const Login = () => {
   return (
     <div className="container mx-auto p-4">
-      <h2>Log in</h2>
+      <LoginForm />
     </div>
   )
 }
