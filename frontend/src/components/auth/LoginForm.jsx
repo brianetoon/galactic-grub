@@ -29,7 +29,7 @@ const LoginForm = () => {
 
   return (
     <AuthCard
-      title="Log in"
+      title="login"
       label="Log in to your account"
       backButtonHref="/register"
       backButtonLabel="Don't have an account? Register here."

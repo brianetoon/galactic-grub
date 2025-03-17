@@ -10,7 +10,7 @@ import BackButton from "./BackButton";
 
 const AuthCard = ({ title, label, backButtonHref, backButtonLabel, children }) => {
   return (
-   <Card className="xl:w-1/3 md:w-1/2 shadow-md mx-auto">
+   <Card className="max-w-sm shadow-md mx-auto">
     <CardHeader>
       <AuthHeader title={title} label={label} />
     </CardHeader>

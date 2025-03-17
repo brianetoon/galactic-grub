@@ -30,7 +30,7 @@ const RegisterForm = () => {
 
   return (
     <AuthCard
-      title="Register"
+      title="register"
       label="Create an account"
       backButtonHref="/login"
       backButtonLabel="Already have an account? Log in here."
@@ -83,7 +83,7 @@ const RegisterForm = () => {
 
           </div>
 
-          <Button type="submit" className="w-full">
+          <Button type="submit" variant="default" className="w-full">
             Register
           </Button>
 

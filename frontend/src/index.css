@@ -46,7 +46,8 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
+  /* --primary: oklch(0.922 0 0); */
+  --primary: var(--color-sky-400);
   --primary-foreground: oklch(0.205 0 0);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
@@ -73,7 +74,20 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@theme {
+  --font-star-jedi: "Star Jedi", sans-serif;
+  --font-star-jedi-hollow: "Star Jedi Hollow", sans-serif;
+}
+
 @theme inline {
+  --color-primary-300: var(--color-sky-300);
+  --color-primary-400: var(--color-sky-400);
+  --color-primary-500: var(--color-sky-500);
+
+  --color-secondary-300: var(--color-yellow-300);
+  --color-secondary-400: var(--color-yellow-400);
+  --color-secondary-500: var(--color-yellow-500);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -117,5 +131,23 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  @font-face {
+    font-family: 'Star Jedi';
+    src: url('/fonts/StarJedi.woff2') format('woff2'),
+        url('/fonts/StarJedi.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Star Jedi Hollow';
+    src: url('/fonts/StarJediHollow.woff2') format('woff2'),
+        url('/fonts/StarJediHollow.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
   }
 }
