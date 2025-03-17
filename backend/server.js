@@ -1,9 +1,10 @@
 import express from "express";
 import mongoose from "mongoose";
+import cors from "cors";
 import "dotenv/config";
 import errorHandler from "./middleware/errorHandler.js";
 import recipesRoutes from "./routes/recipesRoutes.js";
-import usersRoutes from "./routes/usersRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
 
 const app = express();
 const port = process.env.PORT || 8080; 
@@ -14,12 +15,14 @@ if (!process.env.MONGO_URI) {
   process.exit(1);
 }
 
+app.use(cors({ origin: "http://localhost:5173" }));
+
 // Parse JSON
 app.use(express.json());
 
 // API Routes
 app.use("/api/recipes", recipesRoutes);
-app.use("/api/users", usersRoutes);
+app.use("/api/auth", authRoutes);
 
 // Catch all 404 handler for undefined routes
 app.use("*", (req, res, next) => {

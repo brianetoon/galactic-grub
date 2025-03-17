@@ -11,7 +11,7 @@ export const signupUser = async (req, res, next) => {
 
     res.status(201).json({ 
       success: true,
-      data: {
+      user: {
         _id: user._id,
         username: user.username,
         email: user.email
@@ -34,7 +34,7 @@ export const loginUser = async (req, res, next) => {
 
     res.status(201).json({ 
       success: true,
-      data: {
+      user: {
         _id: user._id,
         username: user.username,
         email: user.email
