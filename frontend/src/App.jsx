@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 
 import Header from "./components/layout/Header";
+import StarsBackground from "./components/layout/StarsBackground";
 
 import Home from "./pages/Home";
 import Register from "./pages/Register";
@@ -12,8 +13,9 @@ import Login from "./pages/Login";
 
 function App() {
   return (
-    <div className="app">
+    <div className="app relative">
       <Router>
+        <StarsBackground />
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -25,4 +27,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
