@@ -1,4 +1,5 @@
 import AuthCard from "./AuthCard"
+import useAuthStore from "@/store/useAuthStore";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { RegisterSchema } from "@/schemas/authSchema";
@@ -14,6 +15,7 @@ import {
 } from "@/components/ui/form";
 
 const RegisterForm = () => {
+  const { register } = useAuthStore();
 
   const form = useForm({
     resolver: zodResolver(RegisterSchema),
@@ -25,7 +27,7 @@ const RegisterForm = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    register(data);
   }
 
   return (
