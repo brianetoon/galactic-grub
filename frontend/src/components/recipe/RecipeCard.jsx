@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 
 const RecipeCard = ({ recipe }) => {
   return (
-    <Card className="w-full max-w-sm mx-auto pt-0 gap-2 bg-zinc-900">
+    <Card className="w-full max-w-sm mx-auto pt-0 gap-2">
       <img 
         src="/images/bantha-burger.jpg"
         alt="Bantha Burger" 
