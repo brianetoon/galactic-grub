@@ -19,8 +19,8 @@ export const signupUser = async (req, res, next) => {
       token 
     });
 
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 }
 
@@ -42,7 +42,7 @@ export const loginUser = async (req, res, next) => {
       token 
     });
 
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 }

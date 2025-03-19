@@ -1,8 +1,10 @@
 const errorHandler = (err, req, res, next) => {
   console.error(err.stack);
 
+  const statusCode = err.statusCode || 500;
+
   // 404 Not Found errors for undefined routes
-  if (err.status === 404) {
+  if (statusCode === 404) {
     return res.status(404).json({
       success: false,
       error: err.message || "Resource not found",
@@ -36,7 +38,7 @@ const errorHandler = (err, req, res, next) => {
   }
 
   // Generic Server Error
-  res.status(500).json({
+  res.status(statusCode).json({
     success: false,
     error: err.message || "Something went wrong 🤷",
   });
