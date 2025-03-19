@@ -1,6 +1,25 @@
 # Galactic Grub
 
-## Requirements
+Galactic Grub is a A Star Wars-themed recipe-sharing web app where users (Star Wars characters) can post, share and comment on recipes.
+
+Fun backstory: After the Galactic Recipe Hub was destroyed by the Death Star, the app's mission is to preserve recipes from across the galaxy.
+
+## Key Features
+
+- **User Authentication**: Sign up, log in, and manage profiles.
+- **Recipe Management**: Users can create, edit, and delete recipes.
+- **Comments & Interaction**: Users can comment on and engage with recipes.
+- **Theming & Design**: Uses Tailwind CSS (with Shadcn UI) and a video background of stars for an immersive experience.
+
+## Tech Stack
+
+- **Frontend**: React (Vite)
+- **State Management**: Zustand
+- **Styling**: Tailwind CSS, Shadcn UI
+- **Backend**: Node.js, Express, MongoDB
+- **Authentication**: JWT
+
+## Project Requirements
 
 **Project Structure, Standardization and Convention (20%)**
 
@@ -49,3 +68,7 @@
 - Highlight the technical functionality of the application, from a high-level perspective. (1%)
 - Discuss what you have learned through the development of the application. (1%)
 - Discuss additional features that could be added to the application in the future. (1%)
+
+## Deliverables
+
+- GitHub Repository: https://github.com/brianetoon/galactic-grub
