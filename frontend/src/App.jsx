@@ -12,6 +12,7 @@ import StarsBackground from "./components/layout/StarsBackground";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import CreateRecipe from "./pages/CreateRecipe";
 
 function App() {
   const { token } = useAuthStore();
@@ -25,6 +26,10 @@ function App() {
           <Route 
             path="/" 
             element={token ? <Home /> : <Navigate to="/login" />} 
+          />
+          <Route 
+            path="/create-recipe" 
+            element={token ? <CreateRecipe /> : <Navigate to="/login" />} 
           />
           <Route 
             path="/register" 
