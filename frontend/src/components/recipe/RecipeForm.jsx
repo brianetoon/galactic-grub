@@ -1,10 +1,11 @@
-import AuthFormCard from "./AuthFormCard"
+import RecipeFormCard from "./RecipeFormCard";
 import useAuthStore from "@/store/useAuthStore";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { RegisterSchema } from "@/schemas/authSchema";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
+import { RecipeSchema } from "@/schemas/recipeSchema";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -14,41 +15,37 @@ import {
   FormMessage
 } from "@/components/ui/form";
 
-const RegisterForm = () => {
-  const { register } = useAuthStore();
+const RecipeForm = () => {
+  const { user } = useAuthStore();
 
   const form = useForm({
-    resolver: zodResolver(RegisterSchema),
+    resolver: zodResolver(RecipeSchema),
     defaultValues: {
-      username: "",
-      email: "",
-      password: ""
+      title: "",
+      description: "",
+      instructions: ""
     }
   });
 
   const onSubmit = (data) => {
-    register(data);
+    console.log({ ...data, userId: user._id });
   }
 
   return (
-    <AuthFormCard
-      title="register"
-      label="Create an account"
-      backButtonHref="/login"
-      backButtonLabel="Already have an account? Log in here."
-    >
+    <RecipeFormCard>
+      
       <Form {...form}>
-
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-4">
+
             <FormField 
               control={form.control}
-              name="username"
+              name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
+                  <FormLabel>Title</FormLabel>
                   <FormControl>
-                    <Input {...field} type="text" placeholder="Chewie" />
+                    <Input {...field} type="text" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -57,12 +54,12 @@ const RegisterForm = () => {
 
             <FormField 
               control={form.control}
-              name="email"
+              name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>Description</FormLabel>
                   <FormControl>
-                    <Input {...field} type="email" placeholder="chewbacca@smugglernet.space" />
+                    <Textarea {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -71,28 +68,28 @@ const RegisterForm = () => {
 
             <FormField 
               control={form.control}
-              name="password"
+              name="instructions"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel>Instructions</FormLabel>
                   <FormControl>
-                    <Input {...field} type="password" placeholder="******" />
+                    <Textarea {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
 
-          </div>
-
-          <Button type="submit" variant="default" className="w-full">
-            Register
+          <Button type="submit" className="w-full">
+            Submit Recipe
           </Button>
 
+          </div>
         </form>
       </Form>
-    </AuthFormCard>
+
+    </RecipeFormCard>
   )
 }
 
-export default RegisterForm
+export default RecipeForm

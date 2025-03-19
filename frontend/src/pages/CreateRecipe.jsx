@@ -1,12 +1,12 @@
 import Container from "@/components/layout/Container"
+import RecipeForm from "@/components/recipe/RecipeForm"
 
 const CreateRecipe = () => {
   return (
     <Container>
-      <h2>Create a New Recipe</h2>
-      {/* new recipe form here */}
+      <RecipeForm />
     </Container>
   )
 }
 
-export default CreateRecipe
+export default CreateRecipe;

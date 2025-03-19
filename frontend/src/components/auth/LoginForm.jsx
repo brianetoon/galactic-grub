@@ -1,4 +1,4 @@
-import AuthCard from "./AuthCard"
+import AuthFormCard from "./AuthFormCard"
 import useAuthStore from "@/store/useAuthStore";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -30,7 +30,7 @@ const LoginForm = () => {
   }
 
   return (
-    <AuthCard
+    <AuthFormCard
       title="login"
       label="Log in to your account"
       backButtonHref="/register"
@@ -77,7 +77,7 @@ const LoginForm = () => {
 
         </form>
       </Form>
-    </AuthCard>
+    </AuthFormCard>
   )
 }
 
