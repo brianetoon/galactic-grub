@@ -19,6 +19,25 @@ Fun backstory: After the Galactic Recipe Hub was destroyed by the Death Star, th
 - **Backend**: Node.js, Express, MongoDB
 - **Authentication**: JWT
 
+## Backend API Routes
+
+**Recipes Routes: /api/recipes**
+
+- Get all recipes (READ): GET /
+- Get a recipe by ID (READ): GET /:id
+- Create a recipe (CREATE): POST /
+- Update a recipe (UPDATE): PATCH /:id
+- Delete a recipe (DELETE): DELETE /:id
+
+**Auth Routes: /api/auth**
+
+- Sign up user (CREATE): POST /
+- Log in user (CREATE): POST /
+
+**Upload Routes: /api/upload**
+
+- Upload an image (CREATE): POST /
+
 ## Project Requirements
 
 **Project Structure, Standardization and Convention (20%)**
