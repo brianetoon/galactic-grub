@@ -1,6 +1,7 @@
 import RecipeFormCard from "./RecipeFormCard";
 import useAuthStore from "@/store/useAuthStore";
 import useCreateRecipe from "@/hooks/useCreateRecipe";
+import useUploadImage from "@/hooks/useUploadImage";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -21,7 +22,12 @@ import {
 
 const RecipeForm = () => {
   const { createNewRecipe, loading, error } = useCreateRecipe();
+  const { uploadImage } = useUploadImage();
   const { user } = useAuthStore();
+
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
+
   // Todo: figure out a better way to handle ingredients
   const [ingredients, setIngredients] = useState([]);
   const [ingredientInput, setIngredientInput] = useState("");
@@ -35,6 +41,22 @@ const RecipeForm = () => {
     }
   });
 
+  // Image file
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setSelectedImage(file);
+    }
+  };
+
+  // Image upload
+  const handleUploadImage = async () => {
+    if (!selectedImage) return;
+    const imgUrl = await uploadImage(selectedImage);
+    setImageUrl(imgUrl)
+  }
+
+  // Ingredients
   const addIngredient = () => {
     if (ingredientInput.trim() && !ingredients.includes(ingredientInput.trim())) {
       setIngredients([...ingredients, ingredientInput.trim()]);
@@ -48,9 +70,17 @@ const RecipeForm = () => {
 
   // Form submit
   const onSubmit = async (data) => {
+    // console.log({
+    //   ...data, 
+    //   userId: user._id,
+    //   imgUrl: imageUrl,
+    //   ingredients 
+    // })
+
     const newRecipe = await createNewRecipe({ 
       ...data, 
       userId: user._id,
+      imgUrl: imageUrl,
       ingredients 
     });
 
@@ -114,11 +144,10 @@ const RecipeForm = () => {
                   <FormLabel>Add Ingredient</FormLabel>
                   <div className="flex space-x-2">
                     <Input
-                      value={ingredientInput}
                       onChange={(e) => setIngredientInput(e.target.value)}
-                      placeholder="Enter an ingredient"
+                      value={ingredientInput}
                     />
-                    <Button type="button" onClick={addIngredient}>
+                    <Button variant="secondary" type="button" onClick={addIngredient}>
                       Add
                     </Button>
                   </div>
@@ -138,6 +167,24 @@ const RecipeForm = () => {
                 </FormItem>
               )}
             />
+
+          <FormItem>
+            <FormLabel>Upload Image</FormLabel>
+            <div className="flex gap-2 mt-2">
+              <FormControl>
+                <Input type="file" accept="image/*" onChange={handleImageChange} />
+              </FormControl>
+              <Button
+                type="button"
+                variant="secondary"
+                onClick={handleUploadImage}
+                disabled={!selectedImage}
+              >
+                Upload
+              </Button>
+            </div>
+            {/* {image && <img src={image.url} alt="Recipe" className="mt-2 w-32 h-32 object-cover rounded" />} */}
+          </FormItem>
 
           <Button type="submit" className="w-full">
             Submit Recipe
