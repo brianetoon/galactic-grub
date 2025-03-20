@@ -1,5 +1,6 @@
 import RecipeFormCard from "./RecipeFormCard";
 import useAuthStore from "@/store/useAuthStore";
+import useCreateRecipe from "@/hooks/useCreateRecipe";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -19,6 +20,7 @@ import {
 } from "@/components/ui/form";
 
 const RecipeForm = () => {
+  const { createNewRecipe, loading, error } = useCreateRecipe();
   const { user } = useAuthStore();
   // Todo: figure out a better way to handle ingredients
   const [ingredients, setIngredients] = useState([]);
@@ -30,7 +32,6 @@ const RecipeForm = () => {
       title: "",
       description: "",
       instructions: "",
-      // ingredients: [],
     }
   });
 
@@ -46,8 +47,14 @@ const RecipeForm = () => {
   };
 
   // Form submit
-  const onSubmit = (data) => {
-    console.log({ ...data, userId: user._id, ingredients });
+  const onSubmit = async (data) => {
+    const newRecipe = await createNewRecipe({ 
+      ...data, 
+      userId: user._id,
+      ingredients 
+    });
+
+    // use the newRecipe._id to navigate to new recipe page
   }
 
   return (
@@ -102,12 +109,11 @@ const RecipeForm = () => {
             <FormField
               control={form.control}
               name="ingredients"
-              render={({ field }) => (
+              render={() => (
                 <FormItem>
                   <FormLabel>Add Ingredient</FormLabel>
                   <div className="flex space-x-2">
                     <Input
-                      // {...field}
                       value={ingredientInput}
                       onChange={(e) => setIngredientInput(e.target.value)}
                       placeholder="Enter an ingredient"
@@ -116,6 +122,7 @@ const RecipeForm = () => {
                       Add
                     </Button>
                   </div>
+
                   {/* Display Added Ingredients as Badges */}
                   <div className="flex flex-wrap gap-2 mt-2">
                     {ingredients.map((ingredient, index) => (

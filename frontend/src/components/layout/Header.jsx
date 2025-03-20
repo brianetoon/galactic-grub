@@ -6,7 +6,7 @@ export default function Header() {
   const { user, token, logout } = useAuthStore();
 
   return (
-    <header className="sticky top-0 border-b bg-zinc-900">
+    <header className="sticky top-0 border-b bg-zinc-900 z-10">
      <nav className="container mx-auto flex justify-between items-center p-4">
       <Link to="/" className="font-star-jedi text-xl text-secondary-400">Galactic Grub</Link>
 
