@@ -6,8 +6,9 @@ Fun backstory: After the Galactic Recipe Hub was destroyed by the Death Star, th
 
 ## Key Features
 
-- **User Authentication**: Sign up, log in, and manage profiles.
+- **User Authentication (JWT)**: Sign up, log in, and manage profiles.
 - **Recipe Management**: Users can create, edit, and delete recipes.
+- **File Upload**: Users can upload recipe images.
 - **Comments & Interaction**: Users can comment on and engage with recipes.
 - **Theming & Design**: Uses Tailwind CSS (with Shadcn UI) and a video background of stars for an immersive experience.
 
@@ -16,7 +17,7 @@ Fun backstory: After the Galactic Recipe Hub was destroyed by the Death Star, th
 - **Frontend**: React (Vite)
 - **State Management**: Zustand
 - **Styling**: Tailwind CSS, Shadcn UI
-- **Backend**: Node.js, Express, MongoDB
+- **Backend**: Node.js, Express, MongoDB, Cloudinary
 - **Authentication**: JWT
 
 ## Backend API Routes
@@ -37,6 +38,19 @@ Fun backstory: After the Galactic Recipe Hub was destroyed by the Death Star, th
 **Upload Routes: /api/upload**
 
 - Upload an image (CREATE): POST /
+
+## Future Improvements
+
+- Recipe comments
+- Recipe filtering, searching & sorting
+- Liking & Favoriting
+- User search
+- Sidebar component for logged in users
+- Better user feedback in client
+- Cool animations
+- Music & Sound Effects
+- More Star Wars flavor
+- Read-only guest access
 
 ## Project Requirements
 
