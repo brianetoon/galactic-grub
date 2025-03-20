@@ -1,6 +1,6 @@
 # Galactic Grub
 
-Galactic Grub is a A Star Wars-themed recipe-sharing web app where users (Star Wars characters) can post, share and comment on recipes.
+Galactic Grub is a A Star Wars-themed recipe-sharing web app where users (Star Wars characters and fans) can post, share and comment on recipes.
 
 Fun backstory: After the Galactic Recipe Hub was destroyed by the Death Star, the app's mission is to preserve recipes from across the galaxy.
 
@@ -10,7 +10,7 @@ Fun backstory: After the Galactic Recipe Hub was destroyed by the Death Star, th
 - **Recipe Management**: Users can create, edit, and delete recipes.
 - **File Upload**: Users can upload recipe images.
 - **Comments & Interaction**: Users can comment on and engage with recipes.
-- **Theming & Design**: Uses Tailwind CSS (with Shadcn UI) and a video background of stars for an immersive experience.
+- **Theming & Design**: Uses Tailwind CSS (with Shadcn UI) and a dynamic background for an immersive experience.
 
 ## Tech Stack
 

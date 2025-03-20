@@ -33,7 +33,7 @@ const RegisterForm = () => {
   return (
     <AuthFormCard
       title="register"
-      label="Create an account"
+      label="Join the Galactic Feast"
       backButtonHref="/login"
       backButtonLabel="Already have an account? Log in here."
     >

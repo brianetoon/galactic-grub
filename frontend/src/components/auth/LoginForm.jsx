@@ -32,7 +32,7 @@ const LoginForm = () => {
   return (
     <AuthFormCard
       title="login"
-      label="Log in to your account"
+      label="Enter the Galactic Kitchen!"
       backButtonHref="/register"
       backButtonLabel="Don't have an account? Register here."
     >
