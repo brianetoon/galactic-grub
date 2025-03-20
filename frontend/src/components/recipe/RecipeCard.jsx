@@ -11,13 +11,14 @@ import {
   AvatarImage 
 } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const RecipeCard = ({ recipe }) => {
   return (
     <Card className="w-full max-w-sm mx-auto pt-0 gap-2">
       <img 
         src={recipe.imgUrl}
-        alt="Bantha Burger" 
+        alt={recipe.title}
         className="w-full rounded-t-xl border-b max-h-36 object-cover" 
       />
       <CardHeader>
@@ -27,8 +28,12 @@ const RecipeCard = ({ recipe }) => {
       </CardHeader>
       
       <CardContent>
-        <p>{ recipe.description }</p>
-        <Button variant="link" className="text-base px-0">See Recipe</Button>
+        <p>{ recipe.description.slice(0, 90) + "..." }</p>
+        <Link to={`/recipes/${recipe._id}`}>
+          <Button variant="link" className="text-base px-0">
+            See Recipe
+          </Button>        
+        </Link>
       </CardContent>
 
       <CardFooter className="gap-4">

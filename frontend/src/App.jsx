@@ -6,13 +6,16 @@ import {
   Navigate
 } from "react-router-dom";
 
+// Components
 import Header from "./components/layout/Header";
 import StarsBackground from "./components/layout/StarsBackground";
 
+// Pages
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import CreateRecipe from "./pages/CreateRecipe";
+import RecipeDetails from "./pages/RecipeDetails";
 
 function App() {
   const { token } = useAuthStore();
@@ -26,6 +29,10 @@ function App() {
           <Route 
             path="/" 
             element={token ? <Home /> : <Navigate to="/login" />} 
+          />
+          <Route
+            path="/recipes/:id"
+            element={token ? <RecipeDetails /> : <Navigate to="/login" />}
           />
           <Route 
             path="/create-recipe" 

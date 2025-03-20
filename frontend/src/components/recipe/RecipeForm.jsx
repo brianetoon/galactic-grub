@@ -83,7 +83,7 @@ const RecipeForm = () => {
     });
     // Todo: use the newRecipe._id to navigate to new recipe page
 
-    // navigate("/");
+    navigate("/");
   }
 
   return (
