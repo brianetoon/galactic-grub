@@ -8,7 +8,7 @@ import {
 
 const RecipeFormCard = ({ children }) => {
   return (
-    <Card className="w-full max-w-sm md:max-w-md mx-auto mt-8">
+    <Card className="w-full max-w-md md:max-w-lg mx-auto my-8">
       <CardHeader>
         <FormHeader title="create recipe" label="Add a new recipe to the Galactic Recipe Archive!" />
       </CardHeader>
