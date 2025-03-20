@@ -13,6 +13,9 @@ export default function Header() {
       <div className="space-x-4">
         {user && token ? (
           <>
+            <Link to="/create-recipe">
+              <Button variant="outline">Create</Button>
+            </Link>
             <Button onClick={logout}>Logout</Button>
           </>
         ) : (

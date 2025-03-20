@@ -2,6 +2,7 @@ import RecipeFormCard from "./RecipeFormCard";
 import useAuthStore from "@/store/useAuthStore";
 import useCreateRecipe from "@/hooks/useCreateRecipe";
 import useUploadImage from "@/hooks/useUploadImage";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -24,6 +25,7 @@ const RecipeForm = () => {
   const { createNewRecipe, loading, error } = useCreateRecipe();
   const { uploadImage } = useUploadImage();
   const { user } = useAuthStore();
+  const navigate = useNavigate();
 
   const [selectedImage, setSelectedImage] = useState(null);
   const [imageUrl, setImageUrl] = useState("");
@@ -53,7 +55,7 @@ const RecipeForm = () => {
   const handleUploadImage = async () => {
     if (!selectedImage) return;
     const imgUrl = await uploadImage(selectedImage);
-    setImageUrl(imgUrl)
+    setImageUrl(imgUrl);
   }
 
   // Ingredients
@@ -70,12 +72,8 @@ const RecipeForm = () => {
 
   // Form submit
   const onSubmit = async (data) => {
-    // console.log({
-    //   ...data, 
-    //   userId: user._id,
-    //   imgUrl: imageUrl,
-    //   ingredients 
-    // })
+    
+    // console.log("imageUrl: ", imageUrl);
 
     const newRecipe = await createNewRecipe({ 
       ...data, 
@@ -83,8 +81,9 @@ const RecipeForm = () => {
       imgUrl: imageUrl,
       ingredients 
     });
+    // Todo: use the newRecipe._id to navigate to new recipe page
 
-    // use the newRecipe._id to navigate to new recipe page
+    // navigate("/");
   }
 
   return (
@@ -92,7 +91,7 @@ const RecipeForm = () => {
       
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="space-y-4">
+          <div className="space-y-6">
             
             <FormField 
               control={form.control}
@@ -120,7 +119,7 @@ const RecipeForm = () => {
                   <FormMessage />
                 </FormItem>
               )}
-            />
+            /> 
 
             <FormField 
               control={form.control}

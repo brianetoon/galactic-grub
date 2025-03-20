@@ -16,7 +16,7 @@ const RecipeCard = ({ recipe }) => {
   return (
     <Card className="w-full max-w-sm mx-auto pt-0 gap-2">
       <img 
-        src="/images/bantha-burger.jpg"
+        src={recipe.imgUrl}
         alt="Bantha Burger" 
         className="w-full rounded-t-xl border-b max-h-36 object-cover" 
       />
@@ -27,8 +27,7 @@ const RecipeCard = ({ recipe }) => {
       </CardHeader>
       
       <CardContent>
-        {/* <p>{ recipe.description }</p> */}
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum expedita ullam voluptatum</p>
+        <p>{ recipe.description }</p>
         <Button variant="link" className="text-base px-0">See Recipe</Button>
       </CardContent>
 
